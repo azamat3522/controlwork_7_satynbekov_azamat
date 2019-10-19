@@ -1,0 +1,23 @@
+% extends 'base.html' %}
+
+{#{% block menu %}#}
+{#    <li><a href="{% url 'poll_add' %}">Add Poll</a></li>#}
+{#{% endblock %}#}
+
+{% block content %}
+    <p>{{ poll.question }}{ poll.pk }}</p>
+    <p>Created at <b>{{ poll.created_at|date:'d.m.Y H:i:s'}}</b></p>
+
+    <p><br>Answers:</p>
+    <hr/>
+    {% for choice in poll.choice.all %}
+        <p class="Question">{{ choice.text }}</p>
+        <p><a href="{% url 'choice_update' choice.pk %}">Edit</a></p>
+        <p><a href="{% url 'choice_delete' choice.pk %}">Delete</a></p>
+        <hr/>
+    {% endfor %}
+
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}

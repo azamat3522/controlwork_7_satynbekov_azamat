@@ -20,3 +20,10 @@ class Choice(models.Model):
     def __str__(self):
         return self.text
 
+
+class Answer(models.Model):
+    poll = models.ForeignKey('webapp.Poll', related_name='answers', on_delete=models.CASCADE, verbose_name='опрос')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
+    choice = models.ForeignKey('webapp.Choice', related_name='answers', on_delete=models.CASCADE, verbose_name='вариант')
+
+

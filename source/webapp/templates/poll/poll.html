@@ -18,12 +18,15 @@
         <p class="Question">{{ choice.text }}</p>
         <p><a href="{% url 'choice_update' choice.pk %}">Edit</a></p>
         <p><a href="{% url 'choice_delete' choice.pk %}">Delete</a></p>
+        <p><a href="{% url 'answer_view'%}">List</a></p>
         <hr/>
     {% endfor %}
 
+    <p><a href="{% url 'poll_choice_create' poll.pk %}">ADD</a></p>
 
-    <form action="{% url 'poll_choice_create' poll.pk %}" method="POST" id="add_choice">
-            {% include 'partial/form.html' with button_text='Add' %}
-    </form>
+
+{#    <form action="{% url 'poll_choice_create' poll.pk %}" method="POST" id="add_choice">#}
+{#            {% include 'partial/form.html' with button_text='Add' %}#}
+{#    </form>#}
 
 {% endblock %}
