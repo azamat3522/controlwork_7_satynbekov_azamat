@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ poll.question }}{% endblock %}
+
+{#{% block menu %}#}
+{#    <li><a href="{% url 'article_update' article.pk %}">Edit</a></li>#}
+{#    <li><a href="{% url 'article_delete' article.pk %}">Delete</a></li>#}
+{##}
+{#{% endblock %}#}
+
+{% block content %}
+    <p>{{ poll.question }}</p>
+    <p>Created at <b>{{ poll.created_at|date:'d.m.Y H:i:s'}}</b></p>
+
+    <p><br>Answers:</p>
+    {% for choice in poll.choice.all %}
+        <p class="Question">{{ choice.text }}</p>
+    {% endfor %}
+{% endblock %}
