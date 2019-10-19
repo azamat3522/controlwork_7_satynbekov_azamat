@@ -2,11 +2,11 @@
 
 {% block title %}{{ poll.question }}{% endblock %}
 
-{#{% block menu %}#}
-{#    <li><a href="{% url 'article_update' article.pk %}">Edit</a></li>#}
+{% block menu %}
+    <li><a href="{% url 'poll_update' poll.pk %}">Edit</a></li>
 {#    <li><a href="{% url 'article_delete' article.pk %}">Delete</a></li>#}
-{##}
-{#{% endblock %}#}
+
+{% endblock %}
 
 {% block content %}
     <p>{{ poll.question }}</p>
