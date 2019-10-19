@@ -5,7 +5,7 @@
 {% block menu %}
     <li><a href="{% url 'poll_update' poll.pk %}">Edit</a></li>
     <li><a href="{% url 'poll_delete' poll.pk %}">Delete</a></li>
-
+    <li><a href="#add_choice">Add</a></li>
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,17 @@
     <p>Created at <b>{{ poll.created_at|date:'d.m.Y H:i:s'}}</b></p>
 
     <p><br>Answers:</p>
+    <hr/>
     {% for choice in poll.choice.all %}
         <p class="Question">{{ choice.text }}</p>
+        <p><a href="{% url 'choice_update' choice.pk %}">Edit</a></p>
+        <p><a href="{% url 'choice_delete' choice.pk %}">Delete</a></p>
+        <hr/>
     {% endfor %}
+
+
+    <form action="{% url 'poll_choice_create' poll.pk %}" method="POST" id="add_choice">
+            {% include 'partial/form.html' with button_text='Add' %}
+    </form>
+
 {% endblock %}
